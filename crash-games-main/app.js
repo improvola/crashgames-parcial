@@ -3,36 +3,66 @@ const app = new Vue({
     data: {
         lista: producto,
         nombreProducto: '',
-       
-        
+        // BUSCADOR FILTRO
+        name:'',
+        carrito: [],
+        legajoP: '',
+        nomP: '',
+        precioP: '',
     },
     methods:{
-        
+        // ESTO ES UN EXPERIMENTO
+        agregar: function(){
+            console.log("Agregue");
+            if( this.nomP.trim() != '' && this.precioP.trim() != ''){
+                this.lista.push({
+                    id: parseInt(this.legajoP),
+                    nombre: this.nomP,
+                    precio:  parseInt( this.precioP )
+                });
+                this.legajoP = '';
+                this.nomP = '';
+                this.precio = '';
+            }
+        },
        
         darLike: function(produ){
             produ.like = !produ.like;
+            this.agregarCarrito(produ.like, produ.id);
         },
-        
-        cargar: function(){
-            // do{
-                var id = prompt("Ingrese id producto");
-            // }while(!isNaN(id))
-        
-            // do{
-                var nombre = prompt("Ingrese nombre producto");
-            // }while(isNaN(nombre))
-    
-            // do{
-                var precio = prompt("Ingrese el precio");
-            // }while(isNaN(precio))
-        
-            producto.push({
-                id,
-                nombre,
-                precio
-            });
-        }
+        agregarCarrito: function(varr,es){
+            if(varr == true){
+                console.log(es);
+                // this.lista.forEach(element => {
+                //     if(es== element.id ){
+                //         console.log(element);
+                //     }else{
+                //         console.log("No compraste nada")
+                //     }
+                // });
+                // lista.id[es];
 
+                console.log("Este es el id: "+this.lista[es-1].id);
+                console.log(this.lista[es-1]);
+                pedido = this.lista[es-1];
+                console.log("Agregaste el producto");
+                this.carrito.push(
+                    pedido
+                );
+                this.carrito.forEach(element => {
+                    console.log(element.id)
+                    console.log(element.nombre)
+                });
+                // console.log(this.carrito);
+                
+                // console.log(this.carrito[0].nombre);
+                return this.carrito;
+                // return pedido;
+            }else{
+                console.log("Error");
+            }
+        },
+        // CARGAR UN NUEVO PRODUCTO
         // addCard: function(index){
   
         //     this.carrito.push({
@@ -40,7 +70,6 @@ const app = new Vue({
         //         nombre: this.cursos[index].nombre
         //     })
         // }
-        
     },
 
     computed: {
@@ -48,6 +77,15 @@ const app = new Vue({
             return this.lista.filter(post => {
                 return post.nombre.toLowerCase().includes(this.nombreProducto.toLowerCase());
             });
+        },
+        filtrarProducto(){
+            return this.lista.sort();
+        },
+        mostrarProducto(){
+            return this.carrito;
+        },
+        productosTotales(){
+            return this.carrito.length;
         }
     }
 })
