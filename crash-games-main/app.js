@@ -2,7 +2,7 @@ const app = new Vue({
     el: '#app',
     data: {
         lista: producto,
-        nombreProductos: '',
+        nombreProducto: '',
        
         
     },

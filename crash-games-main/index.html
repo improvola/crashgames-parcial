@@ -61,7 +61,7 @@
       <br>
       <div align="center"><h2>CONOCE NUESTROS PRODUCTOS</h2></div>
       <br>
-      <main id="app">
+      
       <div class="accordion" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
@@ -81,17 +81,18 @@
       <br>
    <h3>Chequea Nuestros Productos</h3>
    <br>
+   <main id="app">
         <!--buscador-->
         <div v-for="produ of buscarProducto"  class="card">
             <div class="row">
                 <i v-on:click="darLike(produ)" v-bind:class="{'like': produ.like==true}" class="fa-solid fa-lg fa-heart "></i>
             </div>
             <!--V-TEXT NOMBRE PELICULA-->
-            <h2 v-text="produ.nombre"></h2>
+            <h4 v-text="produ.nombre"></h4>
             <!--V-BIND IMAGEN PELICULA-->
             <img v-bind:src="produ.fotoUrl" alt="">
             <!--V-TEXT ANIO PELICULA-->
-            <p v-text='produ.precio'> $
+            $<p v-text='produ.precio'></p>
         </div>
       </main>
 
