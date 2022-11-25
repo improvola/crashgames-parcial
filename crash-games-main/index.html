@@ -79,12 +79,12 @@
    <h3>Chequea Nuestros Productos</h3>
    <br>
    <main id="app">
-    <form class="row">
+    <form class="row" v-on:submit.prevent="agregar">
       <h3>Agrega un producto</h3>
       <input class="form-control me-sm-2" type="number" id="search" placeholder="ingrese el id" v-model="legajoP">
       <input class="form-control me-sm-2" type="text" id="search" placeholder="ingrese el nombre" v-model="nomP">
       <input class="form-control me-sm-2" type="number" id="search" placeholder="ingrese un numero" v-model="precioP">
-      <button class="btn btn-secondary md-4 my-sm-3" type="submit" v-on:click="agregar()">Agregar</button>
+      <button class="btn btn-secondary md-4 my-sm-3" type="submit">Agregar</button>
     </form>
     <br>
     <!-- ESTO ES EL BUSCADOR -->
